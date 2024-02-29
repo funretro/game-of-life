@@ -7,12 +7,21 @@ var cellsPerColumn = gridHeight / cellSize;
 
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
-var matrix = new Array(cellsPerRow).fill(0);
+var matrix;
 
-for (var [columnIndex, column] of matrix.entries()) {
-  var row = new Array(cellsPerColumn).fill(0);
-  matrix[columnIndex] = row;
+function initializeMatrix() {
+  console.log(1231231);
+  matrix = new Array(cellsPerRow).fill(0);
+
+  for (var [columnIndex, column] of matrix.entries()) {
+    var row = new Array(cellsPerColumn).fill(0);
+    matrix[columnIndex] = row;
+  }
+
+  printMatrix();
 }
+
+initializeMatrix();
 
 function printMatrix() {
   for (var [rowIndex, row] of matrix.entries()) {
@@ -94,8 +103,6 @@ function process() {
 
   matrix = newMatrix;
 }
-
-printMatrix();
 
 var interval;
 

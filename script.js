@@ -118,6 +118,22 @@ canvas.addEventListener("click", function (event) {
   printMatrix();
 });
 
+canvas.addEventListener("mousedown", function () {
+  canvas.addEventListener("mousemove", handleDraw);
+});
+
+function handleDraw(event) {
+  var x = Math.floor(event.offsetX / cellSize);
+  var y = Math.floor(event.offsetY / cellSize);
+
+  matrix[x][y] = 1;
+  printMatrix();
+}
+
+canvas.addEventListener("mouseup", function () {
+  canvas.removeEventListener("mousemove", handleDraw);
+});
+
 function selectShape(shape) {
   window[shape].forEach((row, rowIndex) =>
     row.forEach((cell, columnIndex) => {

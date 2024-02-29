@@ -10,7 +10,6 @@ var context = canvas.getContext("2d");
 var matrix;
 
 function initializeMatrix() {
-  console.log(1231231);
   matrix = new Array(cellsPerRow).fill(0);
 
   for (var [columnIndex, column] of matrix.entries()) {
@@ -111,10 +110,14 @@ function start() {
     printMatrix();
     process();
   }, 100);
+
+  document.getElementById("myCanvas").style.border = "4px solid green";
 }
 
 function stop() {
   clearInterval(interval);
+
+  document.getElementById("myCanvas").style.border = "4px solid #ccc";
 }
 
 canvas.addEventListener("click", function (event) {
